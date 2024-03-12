@@ -2,7 +2,7 @@ public class NoTeste {
     public static void main(String[] args) {
         No raiz = null;
 
-        // Insere alguns valores na árvore
+        // INSERE VALORES À ÁRVORE BINÁRIA
         raiz = No.inserir(raiz, 10);
         raiz = No.inserir(raiz, 5);
         raiz = No.inserir(raiz, 15);
