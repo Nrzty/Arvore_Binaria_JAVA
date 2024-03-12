@@ -26,6 +26,7 @@ public class No {
         }
     }
 
+    // MÉTODO PARA VERIFICAR SE UM VALOR EXISTE DENTRO DA ÁRVORE
     public static boolean pesquisar(No raiz, int valor){
         // SE O VALOR DA RAIZ FOR NULO, SIGNIFICA QUE A ÁRVORE ESTÁ VAZIA.
         if (raiz == null){
@@ -45,6 +46,7 @@ public class No {
         }
     }
 
+    // MÉTODO PARA REMOVER UM VALOR DENTRO DA ÁRVORE
     public static No remover(No raiz, int valor){
         // VERIFICAR SE HÁ ELEMENTOS NA ÁRVORE
         if (raiz == null) {
@@ -79,11 +81,12 @@ public class No {
         return raiz;
     }
 
+    // ESSE MÉTODO É RESPONSÁVEL POR ENCONTRAR O MENOR VALOR DENTRO DA ÁRVORE, FOI UMA FORMA QUE EU ARRANJEI DE IMPLEMENTAR NO MÉTODO DE REMOVER PARA CASO O NÓ TENHA DOIS FILHOS
     private static int encontrarMenorValor(No raiz) {
         return raiz.noEsquerda == null ? raiz.valor : encontrarMenorValor(raiz.noEsquerda);
     }
 
-    // Método para imprimir a árvore em ordem
+    // MÉTODO PARA IMPRIMIR A ÁRVORE EM ORDEM
     public static void imprimirArvore(No raiz) {
         if (raiz != null) {
             imprimirArvore(raiz.noEsquerda);
