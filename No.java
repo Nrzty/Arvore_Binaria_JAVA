@@ -100,9 +100,7 @@ public class No {
             System.out.print(raiz.valor + " ");
             preFixado(raiz.noEsquerda);
             preFixado(raiz.noDireita);
-        } else {
-            System.out.println("Não Há Nenhum Valor Na Árvore Binária");
-        }
+        } 
     }
     
     public static void posFixado(No raiz){
@@ -110,9 +108,7 @@ public class No {
             posFixado(raiz.noEsquerda);
             posFixado(raiz.noDireita);
             System.out.print(raiz.valor + " ");
-        } else {
-            System.out.println("Não Há Nenhum Valor Na Árvore Binária");
-        }
+        } 
     }
     
     public static void emOrdem(No raiz){
@@ -120,9 +116,7 @@ public class No {
             emOrdem(raiz.noEsquerda);
             System.out.print(raiz.valor + " ");
             emOrdem(raiz.noDireita);
-        } else {
-            System.out.println("Não Há Nenhum Valor Na Árvore Binária");
-        }
+        } 
     }
 
 }
