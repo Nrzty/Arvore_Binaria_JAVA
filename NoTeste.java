@@ -33,5 +33,17 @@ public class NoTeste {
         No.remover(raiz, 20);
         System.out.print("Árvore Binária Com O Valor Removido: ");
         No.imprimirArvore(raiz);
+
+        // IMPRIME A ÁRVORE EM PRÉ-ORDEM 
+        System.out.println("\n" + "Árvore Em Pré-Ordem: ");
+        No.preFixado(raiz);
+        
+        // IMPRIME A ÁRVORE EM PÓS-ORDEM
+        System.out.println("\n" + "Árvore Em Pós-Ordem: ");
+        No.posFixado(raiz);
+        
+        // IMPRIME A ÁRVORE EM ORDEM
+        System.out.println("\n" + "Árvore Em Ordem: ");
+        No.emOrdem(raiz);
     }
 }
