@@ -94,4 +94,30 @@ public class No {
             imprimirArvore(raiz.noDireita);
         }
     }
+
+    public static void preFixado(No raiz){
+        if (raiz != null){
+            System.out.print(raiz.valor + " ");
+            preFixado(raiz.noEsquerda);
+            preFixado(raiz.noDireita);
+        }
+    }
+    
+    public static void posFixado(No raiz){
+        if (raiz != null){
+            posFixado(raiz.noEsquerda);
+            posFixado(raiz.noDireita);
+            System.out.print(raiz.valor + " ");
+            
+        }
+    }
+    
+    public static void emOrdem(No raiz){
+        if (raiz != null){
+            emOrdem(raiz.noEsquerda);
+            System.out.print(raiz.valor + " ");
+            emOrdem(raiz.noDireita);
+        }
+    }
+
 }
