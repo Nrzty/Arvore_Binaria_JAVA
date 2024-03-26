@@ -95,6 +95,7 @@ public class No {
         }
     }
 
+    // PRÉ-ORDEM: ORDEM DE VISITA = RAIZ, ESQUERDA, DIREITA
     public static void preFixado(No raiz){
         if (raiz != null){
             System.out.print(raiz.valor + " ");
@@ -103,6 +104,7 @@ public class No {
         } 
     }
     
+    // PÓS-ORDEM: ORDEM DE VISITA = ESQUERDA, DIREITA, RAIZ
     public static void posFixado(No raiz){
         if (raiz != null){
             posFixado(raiz.noEsquerda);
@@ -111,6 +113,7 @@ public class No {
         } 
     }
     
+    // PÓS-ORDEM: ORDEM DE VISITA = ESQUERDA, RAIZ, DIREITA
     public static void emOrdem(No raiz){
         if (raiz != null){
             emOrdem(raiz.noEsquerda);
@@ -119,4 +122,23 @@ public class No {
         } 
     }
 
+    // MÉTODO QUE PERCORRE OS NÓS DA ÁRVORE E FAZ A CONTAGEM DA MESMA
+    public static int contarNos(No raiz){
+        if (raiz == null) // VERIFICA SE A RAIZ É NULA
+            return 0;
+        else return (1 + contarNos(raiz.noEsquerda) + contarNos(raiz.noDireita)); // CONTA OS NÓS DAS SUBÁRVORES DIREITA E ESQUERDAS
+    }
+
+    // MÉTODO QUE PROCURA A ALTURA DA ÁRVORE
+    public static int altura(No raiz){
+        if (raiz == null || (raiz.noEsquerda == null && raiz.noDireita == null)) // VERIFICA SE A RAIZ É NULA
+            return 0;
+        else{    
+            if (altura(raiz.noEsquerda) > altura(raiz.noDireita)) // CALCULA A ALTURA DA SUBÁRVORE
+            return (1 + altura(raiz.noEsquerda)); // 1 + ALTURA DA SUBÁRVORE ESQUERDA
+            
+            else
+            return (1 + altura(raiz.noDireita)); // 1 + ALTURA DA SUBÁRVORE DIREITA
+        }
+    } 
 }
