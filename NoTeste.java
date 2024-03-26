@@ -45,5 +45,11 @@ public class NoTeste {
         // IMPRIME A ÁRVORE EM ORDEM
         System.out.println("\n" + "Árvore Em Ordem: ");
         No.emOrdem(raiz);
+
+        // IMPRIME A QUANTIDADE DE NÓS
+        System.out.print("\nQuantidade de Nós: " + No.contarNos(raiz));
+
+        // IMPRIME A ALTURA DA ÁRVORE
+        System.out.print("\nAltura da Árvore: " + No.altura(raiz));
     }
 }
