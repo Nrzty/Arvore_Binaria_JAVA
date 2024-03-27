@@ -96,19 +96,19 @@ public class No {
     }
 
     // PRÉ-ORDEM: ORDEM DE VISITA = RAIZ, ESQUERDA, DIREITA
-    public static void preFixado(No raiz){
+    public static void preOrdem(No raiz){
         if (raiz != null){
             System.out.print(raiz.valor + " ");
-            preFixado(raiz.noEsquerda);
-            preFixado(raiz.noDireita);
+            preOrdem(raiz.noEsquerda);
+            preOrdem(raiz.noDireita);
         } 
     }
     
     // PÓS-ORDEM: ORDEM DE VISITA = ESQUERDA, DIREITA, RAIZ
-    public static void posFixado(No raiz){
+    public static void posOrdem(No raiz){
         if (raiz != null){
-            posFixado(raiz.noEsquerda);
-            posFixado(raiz.noDireita);
+            posOrdem(raiz.noEsquerda);
+            posOrdem(raiz.noDireita);
             System.out.print(raiz.valor + " ");
         } 
     }
@@ -128,7 +128,28 @@ public class No {
             return 0;
         else return (1 + contarNos(raiz.noEsquerda) + contarNos(raiz.noDireita)); // CONTA OS NÓS DAS SUBÁRVORES DIREITA E ESQUERDAS
     }
-
+    
+    // Se o nó com o valor especificado não existir, retorna null
+    public static No encontrarNo(No raiz, int valor) {
+        if (raiz == null || raiz.valor == valor) {
+            return raiz;
+        }
+        if (valor < raiz.valor) {
+            return encontrarNo(raiz.noEsquerda, valor);
+        }
+        return encontrarNo(raiz.noDireita, valor);
+    }
+    
+    
+    // MÉTODO QUE CALCULA A ALTURA DE UM NÓ ESPECÍFICO
+    public static int alturaDoNo(No raiz, int valorNo) {
+        No noAlvo = encontrarNo(raiz, valorNo);
+        if (noAlvo == null) {
+            return -1; // Nó não encontrado
+    }
+        return alturaDoNo(noAlvo);
+    }
+    
     // MÉTODO QUE CALCULA A ALTURA DE UM NÓ
     public static int alturaDoNo(No no) {
         if (no == null) {
