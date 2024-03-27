@@ -155,12 +155,75 @@ public class No {
     // MÉTODO QUE IMPRIME A ÁRVORE COM IDENTAÇÃO
     public static void imprimirArvoreIdentada(No raiz, int nivel) {
         if (raiz != null) {
-            imprimirArvoreIdentada(raiz.noDireita, nivel + 1);
+            imprimirArvoreIdentada(raiz.noEsquerda, nivel + 1);
             for (int i = 0; i < nivel; i++) {
                 System.out.print("   "); // Adiciona espaços para identação
             }
             System.out.println(raiz.valor); // Imprime o valor do nó
-            imprimirArvoreIdentada(raiz.noEsquerda, nivel + 1);
+            imprimirArvoreIdentada(raiz.noDireita, nivel + 1);
         }
     }
+
+    // MÉTODO QUE RETORNA O NÍVEL DE CADA NÓ
+    public static int nivelNo(No raiz, int valor, int nivelAtual) {
+        if (raiz == null)
+            return -1;
+        // SE O VALOR DA RAIZ FOR IGUAL O VALOR INSERIDO, ENTÃO ELE SÓ RETORNA O NÍVEL ATUAL
+        if (raiz.valor == valor)
+            return nivelAtual;
+
+        int nivelNoEsquerda = nivelNo(raiz.noEsquerda, valor, nivelAtual + 1);
+        if (nivelNoEsquerda != -1)
+            return nivelNoEsquerda;
+
+        int nivelNoDireita = nivelNo(raiz.noDireita, valor, nivelAtual + 1);
+        return nivelNoDireita;
+    }
+
+
+    // MÉTODO RESPONSÁVEL POR RETORNAR A ALTURA DE CADA NÓ
+    public static void alturaDeCadaNo(No raiz, int nivelAtual) {
+        if (raiz == null)
+            return;
+        // RETORNA O VALOR ATUAL DO NÓ + O NÍVEL
+        System.out.println("Nó: " + raiz.valor + " - Altura: " + nivelAtual);
+
+        // A ALTURA DE CADA NÓ É A SUA RAIZ COM O NÍVEL DELA + 1
+        alturaDeCadaNo(raiz.noEsquerda, nivelAtual + 1);
+        alturaDeCadaNo(raiz.noDireita, nivelAtual + 1);
+    }
+
+    // MÉTODO RESPONSÁVEL POR VERIFICAR A PROFUNDIDADE DE CADA NÓ
+    public static void profundidadeDeCadaNo(No raiz, int nivelAtual) {
+        if (raiz == null)
+            return;
+
+        System.out.println("Nó: " + raiz.valor + " - Profundidade: " + nivelAtual);
+
+        profundidadeDeCadaNo(raiz.noEsquerda, nivelAtual + 1);
+        profundidadeDeCadaNo(raiz.noDireita, nivelAtual + 1);
+    }
+
+    // MÉTODO RESPONSÁVEL POR RETORNAR A PROFUNCIDADE DA ÁRVORE
+    public static int profundidadeDaArvore(No raiz) {
+        if (raiz == null)
+            return 0;
+
+        int profundidadeEsquerda = profundidadeDaArvore(raiz.noEsquerda);
+        int profundidadeDireita = profundidadeDaArvore(raiz.noDireita);
+
+        return Math.max(profundidadeEsquerda, profundidadeDireita) + 1;
+    }
+
+    // RETORNA O NÍVEL DA ÁRVORE
+    public static int nivelDaArvore(No raiz) {
+        if (raiz == null)
+            return 0;
+
+        int nivelEsquerda = nivelDaArvore(raiz.noEsquerda);
+        int nivelDireita = nivelDaArvore(raiz.noDireita);
+
+        return Math.max(nivelEsquerda, nivelDireita) + 1;
+    }
+
 }
