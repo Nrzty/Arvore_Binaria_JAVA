@@ -1,55 +1,59 @@
+import java.util.Scanner;
+
 public class NoTeste {
     public static void main(String[] args) {
         No raiz = null;
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
 
-        // INSERE VALORES À ÁRVORE BINÁRIA
-        raiz = No.inserir(raiz, 10);
-        raiz = No.inserir(raiz, 5);
-        raiz = No.inserir(raiz, 15);
-        raiz = No.inserir(raiz, 3);
-        raiz = No.inserir(raiz, 7);
-        raiz = No.inserir(raiz, 12);
-        raiz = No.inserir(raiz, 20);
+        do {
+            System.out.println("\nMENU:");
+            System.out.println("1. Inserir valor na árvore");
+            System.out.println("2. Pesquisar valor na árvore");
+            System.out.println("3. Remover valor da árvore");
+            System.out.println("4. Imprimir árvore em ordem");
+            System.out.println("5. Imprimir árvore com identação");
+            System.out.println("6. Calcular altura da árvore");
+            System.out.println("7. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextInt();
 
-        // IMPRIME A ÁRVORE BINÁRIA
-        System.out.print("Árvore Binária: " );
-        No.imprimirArvore(raiz);
-        System.out.println();
-        
-        // RETORNA A RAIZ DA ÁRVORE BINÁRIA 
-        System.out.println("Raiz: " + raiz.valor);
-        
-        // RETORNA OS VALORES À DIREITA DA ÁRVORE BINÁRIA
-        System.out.print("Valores Da Direita: " );
-        No.imprimirArvore(raiz.noDireita);
-        
-        // RETORNA OS VALORES À ESQUERDA DA ÁRVORE BINÁRIA
-        System.out.print("\n" + "Valores Da Esquerda: ");
-        No.imprimirArvore(raiz.noEsquerda);
-        System.out.println();
-        No.pesquisar(raiz, 15);
+            switch (opcao) {
+                case 1:
+                    System.out.print("Digite o valor a ser inserido: ");
+                    int valorInserir = scanner.nextInt();
+                    raiz = No.inserir(raiz, valorInserir);
+                    break;
+                case 2:
+                    System.out.print("Digite o valor a ser pesquisado: ");
+                    int valorPesquisar = scanner.nextInt();
+                    No.pesquisar(raiz, valorPesquisar);
+                    break;
+                case 3:
+                    System.out.print("Digite o valor a ser removido: ");
+                    int valorRemover = scanner.nextInt();
+                    raiz = No.remover(raiz, valorRemover);
+                    break;
+                case 4:
+                    System.out.println("Árvore em ordem:");
+                    No.emOrdem(raiz);
+                    break;
+                case 5:
+                    System.out.println("Árvore com identação:");
+                    No.imprimirArvoreIdentada(raiz, 0);
+                    break;
+                case 6:
+                    int altura = No.altura(raiz);
+                    System.out.println("Altura da árvore: " + altura);
+                    break;
+                case 7:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+            }
+        } while (opcao != 7);
 
-        // REMOVE UM VALOR DA ÁRVORE BINÁRIA
-        No.remover(raiz, 20);
-        System.out.print("Árvore Binária Com O Valor Removido: ");
-        No.imprimirArvore(raiz);
-
-        // IMPRIME A ÁRVORE EM PRÉ-ORDEM 
-        System.out.println("\n" + "Árvore Em Pré-Ordem: ");
-        No.preFixado(raiz);
-        
-        // IMPRIME A ÁRVORE EM PÓS-ORDEM
-        System.out.println("\n" + "Árvore Em Pós-Ordem: ");
-        No.posFixado(raiz);
-        
-        // IMPRIME A ÁRVORE EM ORDEM
-        System.out.println("\n" + "Árvore Em Ordem: ");
-        No.emOrdem(raiz);
-
-        // IMPRIME A QUANTIDADE DE NÓS
-        System.out.print("\nQuantidade de Nós: " + No.contarNos(raiz));
-
-        // IMPRIME A ALTURA DA ÁRVORE
-        System.out.print("\nAltura da Árvore: " + No.altura(raiz));
+        scanner.close();
     }
 }
