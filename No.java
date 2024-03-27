@@ -129,6 +129,16 @@ public class No {
         else return (1 + contarNos(raiz.noEsquerda) + contarNos(raiz.noDireita)); // CONTA OS NÓS DAS SUBÁRVORES DIREITA E ESQUERDAS
     }
 
+    // MÉTODO QUE CALCULA A ALTURA DE UM NÓ
+    public static int alturaDoNo(No no) {
+        if (no == null) {
+            return -1; // Nó vazio tem altura -1
+        }
+        int alturaEsquerda = alturaDoNo(no.noEsquerda);
+        int alturaDireita = alturaDoNo(no.noDireita);
+        return 1 + Math.max(alturaEsquerda, alturaDireita); // Altura do nó é 1 + a maior altura entre as subárvores esquerda e direita
+    }
+
     // MÉTODO QUE PROCURA A ALTURA DA ÁRVORE
     public static int altura(No raiz){
         if (raiz == null || (raiz.noEsquerda == null && raiz.noDireita == null)) // VERIFICA SE A RAIZ É NULA
@@ -141,4 +151,16 @@ public class No {
             return (1 + altura(raiz.noDireita)); // 1 + ALTURA DA SUBÁRVORE DIREITA
         }
     } 
+
+    // MÉTODO QUE IMPRIME A ÁRVORE COM IDENTAÇÃO
+    public static void imprimirArvoreIdentada(No raiz, int nivel) {
+        if (raiz != null) {
+            imprimirArvoreIdentada(raiz.noDireita, nivel + 1);
+            for (int i = 0; i < nivel; i++) {
+                System.out.print("   "); // Adiciona espaços para identação
+            }
+            System.out.println(raiz.valor); // Imprime o valor do nó
+            imprimirArvoreIdentada(raiz.noEsquerda, nivel + 1);
+        }
+    }
 }
